@@ -6,6 +6,10 @@ body[class*='3'] > iframe {
   display: none;
 }
 
+body {
+  background-color: #00010b;
+}
+
 .pokemon-info-app a {
   color: #cc0000;
 }
@@ -19,6 +23,7 @@ body[class*='3'] > iframe {
 .pokemon-info-app input {
   line-height: 2;
   font-size: 16px;
+  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   border: none;
   border-radius: 2px;
@@ -54,8 +59,14 @@ body[class*='3'] > iframe {
 .pokemon-info-app .totally-centered {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -68,8 +79,15 @@ body[class*='3'] > iframe {
 }
 
 .pokemon-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -91,8 +109,12 @@ body[class*='3'] > iframe {
 
 .pokemon-info.pokemon-loading {
   opacity: 0.6;
+  -webkit-transition: opacity 0s;
+  -o-transition: opacity 0s;
   transition: opacity 0s;
   /* note: the transition delay is the same as the busyDelayMs config */
+  -webkit-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
   transition-delay: 0.4s;
 }
 
