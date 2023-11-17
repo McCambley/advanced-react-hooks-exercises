@@ -4,17 +4,23 @@
 import * as React from 'react'
 
 function countReducer(state, action) {
-  if (typeof action === 'object') {
-    return {
-      ...state,
-      ...action,
-    }
-  } else if (typeof action === 'function') {
-    const newState = action(state)
-    return {
-      ...state,
-      ...newState,
-    }
+  switch (typeof action) {
+    case 'object':
+      switch (action.type) {
+        case 'INCREMENT':
+          return {
+            ...state,
+            count: state.count + action.step,
+          }
+        default:
+          throw new Error('Unsupported action type')
+      }
+    default:
+      const newState = action(state)
+      return {
+        ...state,
+        ...newState,
+      }
   }
 }
 
@@ -22,7 +28,7 @@ function Counter({initialCount = 0, step = 1}) {
   // 🐨 replace React.useState with React.useReducer.
   // 💰 React.useReducer(countReducer, initialCount)
   // const [count, setCount] = React.useState(initialCount)
-  const [state, setState] = React.useReducer(countReducer, {
+  const [state, dispatch] = React.useReducer(countReducer, {
     count: initialCount,
   })
   // 💰 you can write the countReducer function so you don't have to make any
@@ -31,7 +37,8 @@ function Counter({initialCount = 0, step = 1}) {
   // The 2nd argument is called "newState" - the value passed to setCount
   const {count} = state
   const increment = () =>
-    setState(currentState => ({count: currentState.count + step}))
+    // dispatch(currentState => ({count: currentState.count + step}))
+    dispatch({type: 'INCREMENT', step})
   return <button onClick={increment}>{count}</button>
 }
 
