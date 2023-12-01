@@ -7,7 +7,7 @@ body[class*='3'] > iframe {
 }
 
 body {
-  background-color: #00010b;
+  /* background-color: #00010b; */
 }
 
 .pokemon-info-app a {
