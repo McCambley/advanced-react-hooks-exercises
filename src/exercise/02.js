@@ -60,12 +60,9 @@ function useAsync(initialState) {
 function PokemonInfo({pokemonName}) {
   // 💰 destructuring this here now because it just felt weird to call this
   // "state" still when it's also returning a function called "run" 🙃
-  const {
-    data: pokemon,
-    status,
-    error,
-    run,
-  } = useAsync({status: pokemonName ? 'pending' : 'idle'})
+  const {data, status, error, run} = useAsync({
+    status: pokemonName ? 'pending' : 'idle',
+  })
 
   React.useEffect(() => {
     if (!pokemonName) {
